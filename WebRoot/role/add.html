@@ -1,0 +1,116 @@
+<div class="jarviswidget " id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+    <header>
+        <span class="widget-icon"><i class="fa fa-edit"></i> </span>
+
+        <h2>新增</h2>
+    </header>
+    <div>
+        <div class="jarviswidget-editbox"></div>
+        <div class="widget-body no-padding">
+            <form action="/role/save" class="smart-form" method="post" id="roleForm">
+                <fieldset>
+
+                    <div class="row">
+                        <section class="col " style="width:8%">
+                            <label class="label">title</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="role.title" placeholder="" type="text" value="">
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col " style="width:8%">
+                            <label class="label">name</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="role.name" placeholder="" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:8%">
+                            <label class="label">role name</label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col " style="width:8%">
+                            <label class="label">remark</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="role.remark" placeholder="" type="text" value="">
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col " style="width:8%">
+                            <label class="label">status</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="role.status" placeholder="" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:8%">
+                            <label class="label">状态：1停用，2启用</label>
+                        </section>
+                    </div>
+                </fieldset>
+                <footer>
+                    <button type="button" onclick="mysubmit()" class="btn btn-primary ">添加</button>
+                    <!--
+                    <a href="javascript:loadright('./role')"><button type="button" class="btn btn-default " >返回</button></a>
+                    -->
+                    <a onclick="if(modifyWinJO)modifyWinJO.remove()">
+                        <button type="button" class="btn btn-default ">返回</button>
+                    </a>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            //$("#screen").select2();
+
+        });
+        function mysubmit() {
+
+            var title = document.getElementsByName("role.title")[0].value;//
+            if (isEmpty(title)) {
+                alert("不能为空！");
+                return false;
+            }
+            if (title.length > 100) {
+                alert("太长！");
+                return false;
+            }
+            var name = document.getElementsByName("role.name")[0].value;//
+            if (isEmpty(name)) {
+                alert("不能为空！");
+                return false;
+            }
+            if (name.length > 100) {
+                alert("太长！");
+                return false;
+            }
+            var remark = document.getElementsByName("role.remark")[0].value;//
+            if (remark.length > 200) {
+                alert("太长！");
+                return false;
+            }
+            var status = document.getElementsByName("role.status")[0].value;//
+            if (isEmpty(status)) {
+                alert("不能为空！");
+                return false;
+            }
+            if (status.length > 11) {
+                alert("太长！");
+                return false;
+            }
+            loadrightbydata("/role/save", $('#roleForm').serializeObject());
+            if (modifyWinJO)modifyWinJO.remove();
+        }
+    </script>
+</div>

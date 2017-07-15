@@ -1,0 +1,104 @@
+<div class="jarviswidget " id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+    <header>
+        <span class="widget-icon"><i class="fa fa-edit"></i> </span>
+
+        <h2>用户列表</h2>
+    </header>
+    <div>
+        <div class="jarviswidget-editbox"></div>
+        <div class="widget-body no-padding">
+            <form action="/role/update" class="smart-form" method="post" id="roleForm">
+                <fieldset>
+                    <div class="row">
+                        <input type="hidden" name="roleId" value="${roleId!}"/>
+                    </div>
+
+                    <hr/>
+                    <div class="row">
+                        <div class="col" style="width:10% "  id="div_area">
+                            <section class="col "
+                                     style="width:100% ;padding: 0px;margin:8px 0px 0px 0px;">
+                                <label class="label">用户:</label>
+                            </section>
+                        </div>
+                        <div class="col" style="width:90% " >
+                            <#list userList as user>
+                                <#if user.isThisRole >
+                                    <section class="row" style="width:80% ;padding: 0px;margin: 8px 0px 0px 0px;background:#3eb94e;color: #fff ">
+                                        <input type="checkbox" checked="checked" value="${user.id}" onclick="addUserId()" name="userList">
+                                        <table style="width: 80% ;float:right ">
+                                            <tr>
+                                                <td style="width: 50%;font-size: medium"> 用户名：${user.username}<td>
+                                                <td style="width: 50%;font-size: medium"> 昵称：${user.nickname}<td>
+                                            </tr>
+                                        </table>
+                                    </section>
+                                    <#else>
+                                        <section class="row" style="width:80% ;padding: 0px;margin: 8px 0px 0px 0px;">
+                                            <input type="checkbox" value="${user.id}" onclick="addUserId()" name="userList">
+                                            <table style="width: 80% ;float:right ">
+                                                <tr>
+                                                    <td style="width: 50%;font-size: medium"> 用户名：${user.username}<td>
+                                                    <td style="width: 50%;font-size: medium"> 昵称：${user.nickname}<td>
+                                                </tr>
+                                            </table>
+                                        </section>
+                                </#if>
+                            </#list>
+                        </div>
+                        <input type="hidden" name="userId" id="userId" value=""/>
+                    </div>
+                    <hr/>
+
+                </fieldset>
+                <footer>
+                    <button type="button" onclick="mysubmit()" class="btn btn-primary ">保存</button>
+                    <a onclick="if(modifyWinJO)modifyWinJO.remove()">
+                        <button type="button" class="btn btn-default ">关闭退出</button>
+                    </a>
+                </footer>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        //$("#screen").select2();
+    });
+    function mysubmit() {
+        addUserId();
+        loadrightbydata("/role/addRoleToUser", $('#roleForm').serializeObject());
+        if (modifyWinJO)modifyWinJO.remove();
+    }
+
+
+    var userIds="";
+    function addUserId(){
+        var userId = document.getElementsByName("userList");
+        var userId_val = [];
+        for(var i=0;i<userId.length;i++){
+            if(userId[i].checked==true){
+                if(userId[i].value==0){
+                    userId_val=[0];
+                    break;
+                }
+                userId[i].parentNode.style.color = '#fff';
+                userId[i].parentNode.style.backgroundColor = '#3eb94e';
+                userId_val.push(userId[i].value);
+            }else {
+                userId[i].parentNode.style.color = '';
+                userId[i].parentNode.style.backgroundColor = '';
+            }
+        }
+        userIds =userId_val.join(",");
+
+        document.getElementsByName("userId")[0].value=userIds;
+    }
+
+</script>
+<style>
+    input[type=checkbox]{
+        width: 20px;
+        height: 20px;
+    }
+</style>

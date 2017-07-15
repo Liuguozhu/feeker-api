@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="front/css/style.css"/>
+</head>
+
+<body>
+<header>
+    <div>
+        <h1><img src="front/img/favicon.png" alt=""/></h1>
+        <span>Feeker wiki</span>
+        <!--
+        <div class="login">
+            <a href="javascript:;">login</a>
+        </div>
+        -->
+    </div>
+</header>
+<section>
+    <div class="sec">
+        <div class="left">
+            <ul class="all">
+                <#list  nodes as  node>
+                    <li>
+						<span title="${node.title}">
+							<em>${node.title}</em>
+						</span>
+                        <i class="">
+                            <ul>
+                                <#list node.child_nodes as child_node>
+                                    <li data-html="${child_node.name}">
+                                        <p title="${child_node.title}">
+                                            ${child_node.title}
+                                        </p>
+                                        <div>
+                                            <!--frameborder="0" scrolling="no" onload="this.height=this.contentWindow.document.documentElement.scrollHeight"-->
+                                            <!--<iframe src="${child_node.name}" >-->
+                                                <!--<span class="menu-item-parent">${child_node.title}</span>-->
+                                            <!--</iframe>-->
+                                        </div>
+                                    </li>
+                                </#list>
+                            </ul>
+                        </i>
+                </#list>
+                <div>
+                    <!--frameborder="0" scrolling="no" onload="this.height=this.contentWindow.document.documentElement.scrollHeight"-->
+                    <iframe src="" id="iframe" style="display: block">
+
+                    </iframe>
+                </div>
+            </ul>
+        </div>
+        <div class="right"></div>
+    </div>
+</section>
+</body>
+<script src="front/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="front/js/script.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

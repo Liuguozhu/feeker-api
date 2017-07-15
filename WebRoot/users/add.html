@@ -1,0 +1,97 @@
+<div class="jarviswidget " id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+    <header>
+        <span class="widget-icon"><i class="fa fa-edit"></i> </span>
+
+        <h2>新增用户</h2>
+    </header>
+    <div>
+        <div class="jarviswidget-editbox"></div>
+        <div class="widget-body no-padding">
+            <form action="/users/save" class="smart-form" method="post" id="usersForm">
+                <fieldset>
+                    <div class="row">
+                        <section class="col " style="width:5%">
+                            <label class="label">账号</label>
+                        </section>
+                        <section class="col " style="width:15%">
+                            <label class="input">
+                                <input name="users.username" placeholder="账号" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:5%">
+                            <label class="label">账号一经注册，不允许修改</label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col " style="width:5%">
+                            <label class="label">密码</label>
+                        </section>
+                        <section class="col " style="width:15%">
+                            <label class="input">
+                                <input name="users.password" placeholder="密码" type="text" value="">
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col " style="width:5%">
+                            <label class="label">昵称</label>
+                        </section>
+                        <section class="col " style="width:15%">
+                            <label class="input">
+                                <input name="users.nickname" placeholder="昵称" type="text" value="">
+                            </label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col " style="width:5%">
+                            <label class="label">备注</label>
+                        </section>
+                        <section class="col " style="width:15%">
+                            <label class="input">
+                                <input name="users.remark" placeholder="备注" type="text" value="">
+                            </label>
+                        </section>
+                    </div>
+                    <!--
+                    <div class="row">
+                        <section class="col " style="width:33.33%">
+                            <label class="label">账号</label>
+                            <label class="input" >
+                                <input name="users.username" placeholder="账号" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="label">密码</label>
+                            <label class="input" >
+                                <input name="users.password" placeholder="密码" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="label">昵称</label>
+                            <label class="input" >
+                                <input name="users.nickname" placeholder="昵称" type="text" value="">
+                            </label>
+                        </section>
+                    </div>
+                    -->
+                </fieldset>
+                <footer>
+                    <button type="button" onclick="mysubmit()" class="btn btn-primary ">添加</button>
+                    <a onclick="if(modifyWinJO)modifyWinJO.remove()">
+                        <button type="button" class="btn btn-default ">返回</button>
+                    </a>
+                </footer>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            //$("#screen").select2();
+
+        });
+        function mysubmit() {
+            loadrightbydata("/users/save", $('#usersForm').serializeObject());
+            if (modifyWinJO)modifyWinJO.remove();
+        }
+    </script>
+</div>

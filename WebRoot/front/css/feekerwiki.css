@@ -1,0 +1,31 @@
+
+.thOne{
+    width: 7%;
+}
+.thTwo{
+    width: 20%;
+}
+.thThree{
+    width: 20%;
+}
+.thFour{
+    width: 12%;
+}
+.thFive{
+    width: 19%;
+}
+.thSix{
+    width: 60%;
+}
+
+body {
+    font-size: 14px;
+    font-family: "微软雅黑";
+    text-overflow: ellipsis;
+}
+body {
+    color: black;
+    background: white;
+    margin: 0;
+    font: 12px/140% Verdana,Arial,Helvetica,sans-serif;
+}

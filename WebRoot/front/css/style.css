@@ -1,0 +1,244 @@
+html,
+body,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+img,
+table {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset,
+img {
+    border: none;
+}
+
+img {
+    display: block;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+body {
+    font-size: 14px;
+    font-family: "微软雅黑";
+}
+
+header {
+    width: 100%;
+    height: 66px;
+    background: #363636;
+}
+
+header div {
+    color: #fff;
+    font-size: 24px;
+    line-height: 66px;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header div h1 {
+    width: 48px;
+    height: 48px;
+    line-height: 66px;
+    float: left;
+    margin-top: 12px;
+}
+
+header div h1 img {
+    width: 40px;
+    height: 40px;
+}
+
+header div span {
+    float: left;
+    margin-left: 10px;
+}
+
+header .login a {
+    display: inline-block;
+    float: right;
+    width: 57px;
+    height: 66px;
+    line-height: 66px;
+    color: #fff;
+}
+
+section {
+    width: 100%;
+    height: auto !important;
+    position: relative;
+}
+
+section .sec {
+    margin: 44px auto 0;
+    width: 65%;
+    height: 1600px;
+    border: 1px solid #e6e6e6;
+}
+
+section .sec .left {
+    width: 20%;
+    height: 1600px;
+    float: left;
+    border-right: 1px solid #E6E6E6;
+    overflow: hidden;
+}
+
+section .sec .left .all {
+    width: 100%;
+    float: left;
+    background: #fff;
+    cursor: pointer;
+    height: 1594px;
+    overflow: auto;
+}
+
+section .sec .left .all li {
+    float: left;
+    width: 100%;
+    line-height: 40px;
+    border-bottom: 1px solid #e6e6e6;
+    overflow: hidden;
+}
+
+section .sec .left .all li p {
+    width: 78%;
+    text-align: left;
+    padding-left: 22.6%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+section .sec .left .all li span {
+    display: block;
+    width: 86%;
+    height: 40px;
+    padding-left: 14%;
+    text-align: left;
+    background: url(../img/set.png) no-repeat 6% center;
+}
+
+section .sec .left .all li span em {
+    font-style: normal;
+    display: block;
+    width: 98%;
+    white-space: nowrap; /*强制不换行*/
+    overflow: hidden; /*自动隐藏文字*/
+    text-overflow: ellipsis; /*文字隐藏后添加省略号*/
+
+}
+
+section .sec .left .all li ul li p span {
+    padding-left: 50px;
+    background: none;
+    white-space: nowrap; /*强制不换行*/
+    overflow: hidden; /*自动隐藏文字*/
+    width: 70%; /*不允许出现半汉字截断*/
+    text-overflow: ellipsis; /*文字隐藏后添加省略号*/
+}
+
+section .sec .left .all li i {
+    width: 100%;
+    float: right;
+    display: none;
+    font-style: normal;
+}
+
+section .sec .left .all li i ul {
+    padding-left: 0;
+}
+
+section .sec .left .all li i ul li {
+    text-align: center;
+    border-bottom: none;
+/ / background : url(../img/art.png) no-repeat 58 px center;
+}
+
+section .sec .left .all li i ul li {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*section .sec .left .all li i ul li:hover{*/
+/*//visibility:visible;*/
+/*white-space:normal;*/
+/*overflow:auto;*/
+/*}*/
+/**
+section .sec .left .all li i ul li div {
+  width: 51.5%;
+  height: 1600px;
+  position: absolute;
+  left: 31%;
+  top: 1px;
+  display: none;
+}
+
+section .sec .left .all li i ul li div iframe{
+  width: 100%;
+  height: 100%;
+  border: none;
+  scrolling:no
+}
+**/
+section .sec .left div {
+    width: 51.5%;
+    height: 1600px;
+    position: absolute;
+    left: 31%;
+    top: 1px;
+}
+
+section .sec .left div iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    scrolling: no ;
+}
+
+section .sec .left .all li i ul li:hover {
+    background: #e6e6e6;
+}
+
+

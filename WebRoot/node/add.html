@@ -1,0 +1,193 @@
+<div class="jarviswidget " id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+    <header>
+        <span class="widget-icon"><i class="fa fa-edit"></i> </span>
+
+        <h2>新增</h2>
+    </header>
+    <div>
+        <div class="jarviswidget-editbox"></div>
+        <div class="widget-body no-padding">
+            <form action="/node/save" class="smart-form" method="post" id="nodeForm">
+                <fieldset>
+                    <!--
+                    <div class="row">
+                        <section class="col " style="width:33.33%">
+                            <label class="label"></label>
+                            <label class="input">
+                                <input name="node.id" placeholder="" type="text" value="">
+                            </label>
+                        </section>
+                    </div>
+                    -->
+                    <div class="row">
+                        <section class="col " style="width:15%">
+                            <label class="label">node_name</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="node.title" placeholder="title" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:10%">
+                            <label class="label">节点名称</label>
+                        </section>
+                    </div>
+
+                    <div class="row">
+                        <section class="col " style="width:15%">
+                            <label class="label">node_path</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="node.name" placeholder="" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:10%">
+                            <label class="label">节点路径</label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col " style="width:15%">
+                            <label class="label">level</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="node.level" placeholder="1" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:10%">
+                            <label class="label">1级节点还是2级节点</label>
+                        </section>
+                    </div>
+
+                    <div class="row">
+                        <section class="col " style="width:15%">
+                            <label class="label">pid</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="node.pid" placeholder="0" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:10%">
+                            <label class="label">父节点id</label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col " style="width:15%">
+                            <label class="label">remark</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="node.remark" placeholder="remark" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:10%">
+                            <label class="label">备注</label>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <section class="col " style="width:15%">
+                            <label class="label">status</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="node.status" placeholder="2" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:10%">
+                            <label class="label">状态：1停用，2启用</label>
+                        </section>
+                    </div>
+
+                    <div class="row">
+                        <section class="col " style="width:15%">
+                            <label class="label">group_id</label>
+                        </section>
+                        <section class="col " style="width:33.33%">
+                            <label class="input">
+                                <input name="node.group_id" placeholder="1" type="text" value="">
+                            </label>
+                        </section>
+                        <section class="col " style="width:10%">
+                            <label class="label">group_id</label>
+                        </section>
+                    </div>
+
+                </fieldset>
+                <footer>
+                    <button type="button" onclick="mysubmit()" class="btn btn-primary ">添加</button>
+                    <!--
+                    <a href="javascript:loadright('./node')"><button type="button" class="btn btn-default " >返回</button></a>
+                    -->
+                    <a onclick="if(modifyWinJO)modifyWinJO.remove()">
+                        <button type="button" class="btn btn-default ">返回</button>
+                    </a>
+                </footer>
+            </form>
+        </div>
+    </div>
+    </body>
+    <script type="text/javascript">
+        $(function () {
+            //$("#screen").select2();
+
+        });
+        function mysubmit() {
+
+            var title = document.getElementsByName("node.title")[0].value;//
+            if (isEmpty(title)) {
+                alert("不能为空！");
+                return false;
+            }
+            if (title.length > 100) {
+                alert("太长！");
+                return false;
+            }
+
+            var level = document.getElementsByName("node.level")[0].value;//
+            if (isEmpty(level)) {
+                alert("不能为空！");
+                return false;
+            }
+            if (level.length > 11) {
+                alert("太长！");
+                return false;
+            }
+            var pid = document.getElementsByName("node.pid")[0].value;//
+            if (isEmpty(pid)) {
+                alert("不能为空！");
+                return false;
+            }
+            if (pid.length > 20) {
+                alert("太长！");
+                return false;
+            }
+            var remark = document.getElementsByName("node.remark")[0].value;//
+            if (remark.length > 200) {
+                alert("太长！");
+                return false;
+            }
+            var status = document.getElementsByName("node.status")[0].value;//
+            if (isEmpty(status)) {
+                alert("不能为空！");
+                return false;
+            }
+            if (status.length > 11) {
+                alert("太长！");
+                return false;
+            }
+            var group_id = document.getElementsByName("node.group_id")[0].value;//
+            if (isEmpty(group_id)) {
+                alert("不能为空！");
+                return false;
+            }
+            if (group_id.length > 20) {
+                alert("太长！");
+                return false;
+            }
+            loadrightbydata("/node/save", $('#nodeForm').serializeObject());
+            if (modifyWinJO)modifyWinJO.remove();
+        }
+    </script>
+</div>

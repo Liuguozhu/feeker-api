@@ -1,0 +1,154 @@
+<div class="jarviswidget " id="wid-id-4" data-widget-editbutton="false" data-widget-custombutton="false">
+    <header>
+        <span class="widget-icon"><i class="fa fa-edit"></i> </span>
+
+        <h2>授权</h2>
+    </header>
+    <div>
+        <div class="jarviswidget-editbox"></div>
+        <div class="widget-body no-padding">
+            <form action="/role/update" class="smart-form" method="post" id="roleForm">
+                <fieldset>
+                    <div class="row">
+                        <input type="hidden" name="roleId" value="${roleId!}"/>
+                    </div>
+                    <#if roleId==1 >
+                        <span style="color: red ;">温馨提示：admin 角色不用授权！</span>
+                        <#else>
+                            <span style="color: palevioletred ;">温馨提示：选择tag，则tag下对应的所有page将会全部授权给当前角色！</span>
+                    </#if>
+                    <hr/>
+                    <div class="row" style="height: 570px ;overflow: auto">
+                        <div class="col" style="width:10% " id="div_area">
+                            <section class="col "
+                                     style="width:100% ;padding: 0px;margin:8px 0px 0px 0px;">
+                                <label class="label">页面节点:</label>
+                            </section>
+                        </div>
+                        <div class="col" style="width:90% ">
+                            <#list nodeList as node>
+                                <#if node.isThisRole >
+                                    <section class="row"
+                                             style="width:80% ;padding: 0px;margin: 8px 0px 0px 0px;background:#3eb94e;color: #fff ">
+                                        <input type="checkbox" checked="checked" value="${node.id}"
+                                               onclick="addUserId()" name="nodeList">
+                                        <table style="width: 90% ;float:right ">
+                                            <tr>
+                                                <td style="width: 50%;font-size: medium"> tag：${node.title}
+                                                <td>
+                                                <td style="width: 50%;font-size: medium"> 路径：${node.name}
+                                                <td>
+                                            </tr>
+                                        </table>
+                                    </section>
+                                    <#else>
+                                        <section class="row" style="width:80% ;padding: 0px;margin: 8px 0px 0px 0px;">
+                                            <input type="checkbox" value="${node.id}" onclick="addUserId()"
+                                                   name="nodeList">
+                                            <table style="width: 90% ;float:right ">
+                                                <tr>
+                                                    <td style="width: 50%;font-size: medium"> tag：${node.title}
+                                                    <td>
+                                                    <td style="width: 50%;font-size: medium"> 路径：${node.name}
+                                                    <td>
+                                                </tr>
+                                            </table>
+                                        </section>
+                                </#if>
+                                <#list node.child_nodes as child_node>
+                                    <#if child_node.isThisRole >
+                                        <section class="row"
+                                                 style="width:80% ;padding: 0px;margin: 8px 0px 0px 0px;background:#3eb94e;color: #fff ">
+                                            <input type="checkbox" checked="checked" value="${child_node.id}"
+                                                   onclick="addUserId()" name="nodeList">
+                                            <table style="width: 80% ;float:right ">
+                                                <tr>
+                                                    <td style="width: 50%;font-size: medium"> page：${child_node.title}
+                                                    <td>
+                                                    <td style="width: 50%;font-size: medium"> 路径：${child_node.name}
+                                                    <td>
+                                                </tr>
+                                            </table>
+                                        </section>
+                                        <#else>
+                                            <section class="row"
+                                                     style="width:80% ;padding: 0px;margin: 8px 0px 0px 0px; ">
+                                                <input type="checkbox" value="${child_node.id}" onclick="addUserId()"
+                                                       name="nodeList" >
+                                                <table style="width: 80% ;float:right ">
+                                                    <tr>
+                                                        <td style="width: 50%;font-size: medium"> page：${child_node.title}
+                                                        <td>
+                                                        <td style="width: 50%;font-size: medium"> 路径：${child_node.name}
+                                                        <td>
+                                                    </tr>
+                                                </table>
+                                            </section>
+                                    </#if>
+                                </#list>
+                            </#list>
+                        </div>
+                        <input type="hidden" name="nodeId" id="nodeId" value=""/>
+                    </div>
+                    <hr/>
+                </fieldset>
+                <footer>
+                    <button type="button" onclick="mysubmit()" class="btn btn-primary ">保存</button>
+                    <a onclick="if(modifyWinJO)modifyWinJO.remove()">
+                        <button type="button" class="btn btn-default ">关闭退出</button>
+                    </a>
+                    <!--
+                    <a href="javascript:loadright('./role')"><button type="button" class="btn btn-default " >返回</button></a>
+                    -->
+                </footer>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        //$("#screen").select2();
+    });
+    function mysubmit() {
+        addUserId();
+
+        loadrightbydata("/role/addAccess", $('#roleForm').serializeObject());
+        if (modifyWinJO)modifyWinJO.remove();
+    }
+
+
+    var nodeIds = "";
+    function addUserId() {
+        var nodeId = document.getElementsByName("nodeList");//$("input[name='nodeList']");
+        var nodeId_val = [];
+        for (var i = 0; i < nodeId.length; i++) {
+            if (nodeId[i].checked == true) {
+                if (nodeId[i].value == 0) {
+                    nodeId_val = [0];
+                    break;
+                }
+                nodeId[i].parentNode.style.color = '#fff';
+                nodeId[i].parentNode.style.backgroundColor = '#3eb94e';
+                /**
+                 nodeId[i].css({
+                    'background': '#3eb94e',
+                    'color': '#fff'
+                });
+                 **/
+                nodeId_val.push(nodeId[i].value);
+            } else {
+                nodeId[i].parentNode.style.color = '';
+                nodeId[i].parentNode.style.backgroundColor = '';
+            }
+        }
+        nodeIds = nodeId_val.join(",");
+
+        document.getElementsByName("nodeId")[0].value = nodeIds;
+    }
+</script>
+<style>
+    input[type=checkbox]{
+        width: 20px;
+        height: 20px;
+    }
+</style>
